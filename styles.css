@@ -188,14 +188,39 @@ Modal
   place-items: center;
 }
 .banner {
-  background: var(--clr-white);
+  background: rgba(200,200,250,0.2);
+  /* background-image: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.1)); */
   padding: 4rem 0;
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
   text-align: center;
   width: 90vw;
   max-width: var(--fixed-width);
+  position: relative;
 }
+.banner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 90%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.027);
+  animation: banner 3s linear infinite alternate;
+  pointer-events: none;
+}
+@keyframes banner {
+  100% {
+    left: 100%;
+    width: 0px;
+
+  }
+}
+
+.banner h1 {
+  text-shadow: 3px 3px 1px rgba(221, 221, 221, 0.384);
+}
+
 .modal-btn {
   margin-top: 2rem;
   background: var(--clr-primary-5);
@@ -204,7 +229,8 @@ Modal
 }
 .modal-btn:hover {
   background: transparent;
-  color: var(--clr-primary-5);
+  color: var(--clr-white);
+  border-color: var(--clr-white);
 }
 .modal-overlay {
   position: fixed;
